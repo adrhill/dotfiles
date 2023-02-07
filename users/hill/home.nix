@@ -9,6 +9,7 @@
     # Packages for Sway
     # swaylock # TODO: configure before using
     swayidle
+    swaybg # wallpaper
     wl-clipboard # copy to clipboard
     mako
     wofi
@@ -16,6 +17,8 @@
     # CLI utils
     bat
     fd
+    fzf
+    ripgrep
     tree
     htop
     pciutils # lspci & Co.
@@ -26,6 +29,7 @@
     # GUI
     firefox
     networkmanagerapplet
+    imv # image viewer
     # Programming
     cudatoolkit
     julia
@@ -38,11 +42,13 @@
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
   };
+  #TODO: switch to alacritty
   programs.kitty = {
     enable = true;
     theme = "One Dark";
     font.size = 11;
     font.name = "Julia Mono";
+    # extraConfig = "background_opacity 0.9";
   };
   programs.tmux = {
     enable = true;
@@ -63,7 +69,7 @@
       };
       startup = [
         { command = "waybar"; }
-        { command = "firefox"; }
+        # { command = "firefox"; }
       ];
       # assigns = {
       #   "1" = [{ app_id = "kitty"; }];
@@ -75,6 +81,12 @@
         "type:touchpad" = {
           tap = "enabled";
           natural_scroll = "enabled";
+          scroll_factor = "0.5";
+        };
+      };
+      output = {
+        "*" = {
+          "bg" = "/home/hill/.background-image fill";
         };
       };
       keybindings = lib.mkOptionDefault{

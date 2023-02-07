@@ -1,12 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      <home-manager/nixos>
-    ];
-
+  imports = [
+    ./hardware-configuration.nix
+    <home-manager/nixos>
+  ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  
   # Automatically update packages
   system.autoUpgrade = {
     enable = true;
