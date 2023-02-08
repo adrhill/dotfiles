@@ -1,4 +1,5 @@
 #!/bin/sh
 pushd ~/.dotfiles
-home-manager switch -f ./users/hill/home.nix
+nix build .#homeConfigurations.hill.activationPackage
+home-manager switch --flake .#hill
 popd

@@ -22,6 +22,7 @@
       config.allowUnfree = true;
     };
     lib = nixpkgs-unstable.lib;
+    hm-lib = home-manager-unstable.lib;
     
   in {
     nixosConfigurations = {
@@ -30,13 +31,14 @@
         inherit system;
         modules = [
           ./system/configuration.nix    
-          home-manager-unstable.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
         ];
       };
+    };
+    homeConfigurations.hill = hm-lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        ./users/hill/home.nix
+      ];
     };
   };
 }

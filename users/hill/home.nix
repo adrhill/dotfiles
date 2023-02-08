@@ -187,8 +187,9 @@
     shellAliases = {
       cat = "bat";
       ll = "ls -l";
-      nixup = "sudo nixos-rebuild switch"; # Update
-      nixed = "hx /etc/nixos/configuration.nix"; # Edit
+      flakeed = "hx .dotfiles/flake.nix"; # Update system config Flake
+      nixed = "hx .dotfiles/system/configuration.nix"; # edit system config
+      homeed = "hx .dotfiles/users/hill/home.nix"; # edit this file
       nixgc = "nix-collect-garbage -d"; # Run GC
       copycb = "xclip -selection clipboard";
       code = "codium";
