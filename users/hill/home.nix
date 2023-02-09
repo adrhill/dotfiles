@@ -15,6 +15,7 @@
     wofi
     waybar      
     # CLI utils
+    tmux
     bat
     fd
     fzf
@@ -30,6 +31,7 @@
     firefox
     networkmanagerapplet
     imv # image viewer
+    spotify-player
     # Programming
     cudatoolkit
     julia
@@ -48,10 +50,64 @@
     theme = "One Dark";
     font.size = 11;
     font.name = "Julia Mono";
-    # extraConfig = "background_opacity 0.9";
+    extraConfig = "background_opacity 0.98";
   };
   programs.tmux = {
     enable = true;
+  };
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      cat = "bat";
+      ll = "ls -l";
+      flakeed = "hx .dotfiles/flake.nix"; # Update system config Flake
+      nixed = "hx .dotfiles/system/configuration.nix"; # edit system config
+      homeed = "hx .dotfiles/users/hill/home.nix"; # edit this file
+      nixgc = "nix-collect-garbage -d"; # Run GC
+      copycb = "xclip -selection clipboard";
+      code = "codium";
+      gitgraph = "git log --oneline --decorate --graph";
+    };
+    history.size = 20000;
+    #autosuggestions.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      theme = "agnoster";
+      plugins = [
+        "git"
+        "history"
+        "copyfile"
+        "copypath"
+        "sudo"
+        "autojump"
+        "web-search"
+        "poetry"
+      ];
+    };
+  };
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "onedark";
+      editor.rulers = [88 120];
+    };
+  };    
+  programs.git = {
+    enable = true;
+    userName = "adrhill";
+    userEmail = "adrian.hill@mailbox.org";
+  };
+  programs.nnn = {
+    enable = true;
+    # package = pkgs.nnn.override ({ withNerdIcons = true; });
+    bookmarks = {
+      d = "~/Developer";
+      D = "~/Downloads";
+    };
+  };
+  programs.autojump = {
+    enable = true;
+    enableZshIntegration = true;
   };
   wayland.windowManager.sway = {
     enable = true;
@@ -63,7 +119,7 @@
       bars = [];
       gaps = {
         inner = 8;
-        outer = 0;
+        outer = 1;
         smartBorders = "on";
         smartGaps = true;
       };
@@ -181,47 +237,6 @@
         };
       }
     ];
-  };
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      cat = "bat";
-      ll = "ls -l";
-      flakeed = "hx .dotfiles/flake.nix"; # Update system config Flake
-      nixed = "hx .dotfiles/system/configuration.nix"; # edit system config
-      homeed = "hx .dotfiles/users/hill/home.nix"; # edit this file
-      nixgc = "nix-collect-garbage -d"; # Run GC
-      copycb = "xclip -selection clipboard";
-      code = "codium";
-      gitgraph = "git log --oneline --decorate --graph";
-    };
-    history.size = 20000;
-    #autosuggestions.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "agnoster";
-      plugins = [
-        "git"
-        "history"
-        "copyfile"
-        "copypath"
-        "sudo"
-        "web-search"
-        "poetry"
-      ];
-    };
-  };
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "onedark";
-      editor.rulers = [88 120];
-    };
-  };    
-  programs.git = {
-    enable = true;
-    userName = "adrhill";
-    userEmail = "adrian.hill@mailbox.org";
   };
   programs.vscode = {
     enable = true;
