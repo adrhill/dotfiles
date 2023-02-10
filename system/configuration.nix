@@ -98,6 +98,10 @@
   # Backlight
   programs.light.enable = true;
 
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true; # Pairing GUI
+
   # Add keychain
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
