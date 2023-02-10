@@ -8,12 +8,14 @@
   home.packages = with pkgs; [
     # Packages for Sway
     # swaylock # TODO: configure before using
+    waybar      
+    swayest-workstyle # workspace names to window icons # TODO: fix
     swayidle
     swaybg # wallpaper
     wl-clipboard # copy to clipboard
+    grim # screenshots:w
     mako
     wofi
-    waybar      
     # CLI utils
     tmux
     bat
@@ -29,6 +31,7 @@
     tldr
     # GUI
     firefox
+    tdesktop # Telegram
     networkmanagerapplet
     imv # image viewer
     spotify-player
@@ -50,7 +53,7 @@
     theme = "One Dark";
     font.size = 11;
     font.name = "Julia Mono";
-    extraConfig = "background_opacity 0.98";
+    extraConfig = "background_opacity 0.95";
   };
   programs.tmux = {
     enable = true;
@@ -152,7 +155,9 @@
         "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
         "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
       };
-      output.eDP-1.scale = "1.2"; # DPI
+      # DPI settings four each output device:
+      output.eDP-1.scale = "1.2";
+      output.HDMI-A-1.scale = "1.2";
     };
     extraOptions = [
       "--unsupported-gpu" # NVIDIA drivers
