@@ -90,9 +90,9 @@ in {
     shellAliases = {
       cat = "bat";
       ll = "ls -l";
-      flakeed = "hx .dotfiles/flake.nix"; # Update system config Flake
-      nixed = "hx .dotfiles/system/configuration.nix"; # edit system config
-      homeed = "hx .dotfiles/users/hill/home.nix"; # edit this file
+      flakeed = "hx ~/.dotfiles/flake.nix"; # Update system config Flake
+      nixed = "hx ~/.dotfiles/system/configuration.nix"; # edit system config
+      homeed = "hx ~/.dotfiles/users/hill/home.nix"; # edit this file
       nixgc = "nix-collect-garbage -d"; # Run GC
       copycb = "xclip -selection clipboard";
       code = "codium";
@@ -185,7 +185,7 @@ in {
       };
       # DPI settings four each output device:
       output.eDP-1.scale = "1.2";
-      output.HDMI-A-1.scale = "1.2";
+      output.HDMI-A-1.scale = "1.1";
     };
     extraOptions = [
       "--unsupported-gpu" # NVIDIA drivers
