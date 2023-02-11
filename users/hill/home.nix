@@ -1,6 +1,33 @@
 { config, pkgs, lib, ... }:
 
-{
+let 
+  waybar-style = {
+    margin = {
+      left = "8px";
+      right = "8px";
+      top = "4px";
+      bottom = "4px";
+    };
+    padding = {
+      left = "16px";
+      right = "16px";
+    };
+    border-radius = "10px";
+    transition = "none";
+    color = "#ffffff";
+    background = "#383c4a";
+  };
+  waybar-module-default = with waybar-style; ''
+    margin-right: ${margin.right};
+    padding-left: ${padding.left};
+    padding-right: ${padding.right};
+    border-radius: ${border-radius};
+    transition: ${transition};
+    color: ${color};
+    background: ${background};
+  '';
+
+in {
   home.username = "hill";
   home.homeDirectory = "/home/hill";
 
@@ -9,7 +36,7 @@
     # Packages for Sway
     # swaylock # TODO: configure before using
     waybar      
-    swayest-workstyle # workspace names to window icons # TODO: fix
+    swayest-workstyle # workspace names to window icons # TODO: fix icons
     swayidle
     swaybg # wallpaper
     wl-clipboard # copy to clipboard
@@ -128,11 +155,12 @@
       };
       startup = [
         { command = "waybar"; }
-        # { command = "firefox"; }
+        { command = "sworkstyle";}
       ];
       # assigns = {
-      #   "1" = [{ app_id = "kitty"; }];
-      # }
+      #   "2" = [{ app_id = "firefox"; }];
+      #   "3" = [{ app_id = "telegram-desktop"; }];
+      # };
       input = {
         "type:keyboard" = {
           xkb_options = "caps:escape,ctrl:swap_lalt_lctl";
@@ -175,7 +203,7 @@
           "eDP-1"
           "HDMI-A-1"
         ];
-        modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
+        modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
         modules-right = [
           "cpu"
@@ -270,10 +298,11 @@
       }
 
       #workspaces {
-          margin-right: 8px;
-          border-radius: 10px;
-          transition: none;
-          background: #383c4a;
+          margin-left: ${waybar-style.margin.left};
+          margin-right: ${waybar-style.margin.right};
+          border-radius: ${waybar-style.border-radius};
+          transition: ${waybar-style.transition};
+          background: ${waybar-style.background};
       }
 
       #workspaces button {
@@ -300,101 +329,23 @@
       #workspaces button.focused {
           color: white;
       }
-      #mode {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #clock {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px 0px 0px 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #pulseaudio {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
+      #mode {${waybar-module-default}}
+      #clock {${waybar-module-default}}
+      #pulseaudio {${waybar-module-default}}
       #pulseaudio.muted {
           background-color: #90b1b1;
           color: #2a5c45;
       }
-      #cpu {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #memory {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #network {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #bluetooth {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #temperature {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
+      #cpu {${waybar-module-default}}
+      #memory {${waybar-module-default}}
+      #network {${waybar-module-default}}
+      #bluetooth {${waybar-module-default}}
+      #temperature {${waybar-module-default}}
       #temperature.critical {
           background-color: #eb4d4b;
       }
-      #backlight {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-      #battery {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
+      #backlight {${waybar-module-default}}
+      #battery {${waybar-module-default}}
       #battery.charging {
           color: #ffffff;
           background-color: #26A65B;
@@ -406,20 +357,8 @@
       #battery.critical:not(.charging) {
           background-color: #f53c3c;
           color: #ffffff;
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
       }
-      #tray {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
+      #tray {${waybar-module-default}}
       @keyframes blink {
           to {
               background-color: #ffffff;
