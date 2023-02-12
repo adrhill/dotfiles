@@ -38,7 +38,6 @@
       inherit pkgs;
       modules = [
         ./home/hill.nix
-        ./home/modules
       ];
     };
   };

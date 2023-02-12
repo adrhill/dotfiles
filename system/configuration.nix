@@ -3,8 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    # <home-manager/nixos>
   ];
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -17,7 +17,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest; # This breaks Nix on reboot
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
       efi = {
@@ -100,7 +100,7 @@
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true; # Pairing GUI
+  services.blueman.enable = true; # GUI
 
   # Add keychain
   services.gnome.gnome-keyring.enable = true;
@@ -110,10 +110,8 @@
   environment.systemPackages = with pkgs; [
     vim
     helix
-    wget
-    bat
     kitty
-    # git
+    firefox
   ];
   
   fonts.fonts = with pkgs; [
@@ -131,7 +129,7 @@
   environment.shells = [ pkgs.zsh ];
 
   environment.variables = {
-    EDITOR = "helix";
+    EDITOR = "hx"; # Helix
     BROWSER = "firefox";
     TERMINAL = "kitty";
     GDK_BACKEND = "wayland";

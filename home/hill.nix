@@ -1,42 +1,64 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./modules
+  ];
+
   home.username = "hill";
   home.homeDirectory = "/home/hill";
 
   nixpkgs.config.allowUnfree = true;    
   home.packages = with pkgs; [
-    # Packages for Sway
+    #===== Packages for Sway =====#
     # swaylock # TODO: configure before using
-    waybar      
-    swayest-workstyle # workspace names to window icons # TODO: fix icons
-    swayidle
-    swaybg # wallpaper
-    wl-clipboard # copy to clipboard
-    grim # screenshots:w
-    mako
+    # Launcher
     wofi
-    # CLI utils
+    # Use window icons as workspace names
+    swayest-workstyle # TODO: fix icons
+    # Notifications
+    mako
+    # Idle management
+    swayidle
+    # Set wallpaper
+    swaybg
+    # Copy to clipboard
+    wl-clipboard
+    # Take screenshots
+    grim
+    #===== CLI utils =====#
+    # Terminal multiplexer
     tmux
+    # File manager
     nnn
+    # Pretty 'cat'
     bat
+    # Fast 'find'
     fd
+    # Fuzzy finder
     fzf
     ripgrep
-    tree
+    # Process viewer
     htop
-    pciutils # lspci & Co.
-    comma
+    # PCI utilities, e.g. lspci
+    pciutils
+    # Print system information
     neofetch
+    # Git Terminal UI
     gitui
+    # CLI helper
     tldr
-    # GUI
+    #===== GUI =====#
     firefox
-    tdesktop # Telegram
+    # Image viewer
+    imv
+    # Network manager GUI
     networkmanagerapplet
-    imv # image viewer
+    # Telegram
+    tdesktop
+    # Spotify
     spotify-player
-    # Programming
+    #===== Programming =====#
     cudatoolkit
     julia
     python310
@@ -44,12 +66,12 @@
     # Make GNOME icon themes available
     gnome.adwaita-icon-theme
   ];
+
   gtk.iconTheme = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
   };
   
-
   home.stateVersion = "22.11";
 
   # Let Home Manager install and manage itself.
