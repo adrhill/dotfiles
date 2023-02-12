@@ -37,7 +37,7 @@
     homeConfigurations.hill = hm-lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        ./users/hill/home.nix
+        ./home/hill.nix
       ];
     };
   };
