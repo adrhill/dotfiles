@@ -122,11 +122,6 @@ in {
       editor.rulers = [88 120];
     };
   };    
-  programs.git = {
-    enable = true;
-    userName = "adrhill";
-    userEmail = "adrian.hill@mailbox.org";
-  };
   programs.nnn = {
     enable = true;
     # package = pkgs.nnn.override ({ withNerdIcons = true; });
