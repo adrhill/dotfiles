@@ -60,12 +60,19 @@
     # Spotify
     spotify-player
     #===== Programming =====#
+    # GPU support
     cudatoolkit
+    # Julia
     julia
+    # Python
     python310
     poetry
+    # Nix LSP
+    rnix-lsp
+    #===== Other =====#
     # Make GNOME icon themes available
     gnome.adwaita-icon-theme
+    
   ];
 
   gtk.iconTheme = {
