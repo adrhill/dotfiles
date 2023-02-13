@@ -4,7 +4,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "onedark";
+      theme = "nixTheme"; # defined in ./themes
       editor.rulers = [88 120];
     };
   };    

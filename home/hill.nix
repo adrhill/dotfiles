@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules
+    ../themes
   ];
 
   home.username = "hill";
