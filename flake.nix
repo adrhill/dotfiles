@@ -12,9 +12,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    # Theming:
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, nix-colors, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs-unstable {
@@ -22,7 +24,7 @@
         config.allowUnfree = true;
       };
       lib = nixpkgs-unstable.lib;
-      hm-lib = home-manager-unstable.lib;
+      home-manager.lib = home-manager-unstable.lib;
 
     in
     {
@@ -36,11 +38,14 @@
           ];
         };
       };
-      homeConfigurations.hill = hm-lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home/hill.nix
-        ];
+      homeConfigurations = {
+        hill = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/hill.nix
+          ];
+          extraSpecialArgs = { inherit nix-colors; };
+        };
       };
     };
 }

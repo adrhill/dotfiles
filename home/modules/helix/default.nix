@@ -1,10 +1,16 @@
-{ ... }:
+{ config, ... }:
 
+let
+  inherit (config) colorscheme;
+
+
+in
 {
   programs.helix = {
     enable = true;
+    themes = import ./theme.nix { inherit colorscheme; };
     settings = {
-      theme = "nixTheme"; # defined in ./themes
+      theme = "${colorscheme.slug}";
       editor.rulers = [ 88 120 ];
     };
     languages = [

@@ -1,13 +1,25 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, config, nix-colors, lib, ... }:
 
+# let
+#   nix-colors-lib-contrib = nix-colors.lib-contrib { inherit pkgs; };
+
+# in
 {
   imports = [
     ./modules
-    ../themes
+    nix-colors.homeManagerModule
   ];
 
   home.username = "hill";
   home.homeDirectory = "/home/hill";
+
+  # wallpaper = nix-colors-lib-contrib.nixWallpaperFromScheme {
+  #   scheme = config.colorScheme;
+  #   width = 3840;
+  #   height = 2160;
+  #   logoScale = 5.0;
+  # };
+  colorscheme = nix-colors.colorSchemes.oceanicnext;
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
