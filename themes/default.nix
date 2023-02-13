@@ -1,5 +1,5 @@
 { ... }:
 
 {
-	imports = [ ./gh_dark_dimmed ];
+  imports = [ ./gh_dark_dimmed ];
 }

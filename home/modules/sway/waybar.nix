@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-let 
+let
   waybar-style = {
     margin = {
       left = "8px";
@@ -27,7 +27,8 @@ let
     background: ${background};
   '';
 
-in {
+in
+{
   programs.waybar = {
     enable = true;
     systemd.target = "sway-session.target";
@@ -68,8 +69,8 @@ in {
         "memory" = { format = "{}% "; };
         "temperature" = {
           critical-threshold = 80;
-          format =  "{temperatureC}°C {icon}";
-          format-icons = [" " "" ""];
+          format = "{temperatureC}°C {icon}";
+          format-icons = [ " " "" "" ];
         };
         "network" = {
           format-wifi = " {essid} ({signalStrength}%)";
@@ -77,13 +78,13 @@ in {
           format-disconnected = "Disconnected ⚠";
         };
         "bluetooth" = {
-        	# controller = "controller1"; # specify the alias of the controller if there are more than 1 on the system
-        	format = " {status}";
-        	format-disabled = ""; # an empty format will hide the module
-        	format-connected = " {num_connections} connected";
-        	tooltip-format = "{controller_alias}\t{controller_address}";
-        	tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
-        	tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+          # controller = "controller1"; # specify the alias of the controller if there are more than 1 on the system
+          format = " {status}";
+          format-disabled = ""; # an empty format will hide the module
+          format-connected = " {num_connections} connected";
+          tooltip-format = "{controller_alias}\t{controller_address}";
+          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
         };
         "pulseaudio" = {
           format = "{icon} {volume}%";
@@ -96,7 +97,7 @@ in {
             "phone" = "";
             "portable" = "";
             "car" = "";
-            "default" = ["" ""];
+            "default" = [ "" "" ];
           };
         };
         "battery" = {
@@ -109,10 +110,10 @@ in {
           format-charging = "{capacity}% ";
           format-plugged = "{capacity}% ";
           format-alt = "{time} {icon}";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [ "" "" "" "" "" ];
         };
         "clock" = {
-          tooltip-format =  "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format-alt = "{:%Y-%m-%d}";
         };
       }
@@ -203,5 +204,5 @@ in {
           }
       }
     '';
-  };	
+  };
 }

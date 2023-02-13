@@ -9,7 +9,7 @@
     "nix-command"
     "flakes"
   ];
-  
+
   # Automatically update packages
   system.autoUpgrade = {
     enable = true;
@@ -27,19 +27,19 @@
       timeout = 3; # wait time until boot
     };
   };
-  
+
   # Enable NVIDIA GPU with Optimus
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.prime = {
     sync.enable = true;
     nvidiaBusId = "PCI:2:0:0"; # shown using lspci
-    intelBusId = "PCI:0:2:0"; 
+    intelBusId = "PCI:0:2:0";
   };
   hardware.opengl = {
     enable = true;
     driSupport = true;
   };
-  
+
   # Systen-wide priviledges for Sway
   security.polkit.enable = true;
 
@@ -50,12 +50,12 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
-  };    
+  };
   # Start sway automatically
   environment.loginShellInit = ''
     [[ "$(tty)" == /dev/tty1 ]] && sway
   '';
-  
+
   # Enable networking
   networking.hostName = "nixos"; # hostname.
   networking.networkmanager.enable = true;
@@ -94,7 +94,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  
+
   # Backlight
   programs.light.enable = true;
 
@@ -105,7 +105,7 @@
   # Add keychain
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring  = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -113,7 +113,7 @@
     kitty
     firefox
   ];
-  
+
   fonts.fonts = with pkgs; [
     julia-mono
     source-code-pro
@@ -124,7 +124,7 @@
     material-design-icons
     material-icons
   ];
-  
+
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
 
@@ -138,15 +138,15 @@
 
   users.users.hill = {
     isNormalUser = true;
-    extraGroups = [ 
-      "wheel" 
-      "networkmanager" 
+    extraGroups = [
+      "wheel"
+      "networkmanager"
       "audio"
       "video"
       "optical"
       "storage"
     ];
   };
-  
+
   system.stateVersion = "22.11";
 }

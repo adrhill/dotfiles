@@ -9,7 +9,7 @@
   home.username = "hill";
   home.homeDirectory = "/home/hill";
 
-  nixpkgs.config.allowUnfree = true;    
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     #===== Packages for Sway =====#
     # swaylock # TODO: configure before using
@@ -72,14 +72,14 @@
     #===== Other =====#
     # Make GNOME icon themes available
     gnome.adwaita-icon-theme
-    
+
   ];
 
   gtk.iconTheme = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
   };
-  
+
   home.stateVersion = "22.11";
 
   # Let Home Manager install and manage itself.

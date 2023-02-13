@@ -13,32 +13,34 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
-  
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }: 
-  let 
-    system = "x86_64-linux";
-    pkgs = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    lib = nixpkgs-unstable.lib;
-    hm-lib = home-manager-unstable.lib;
-    
-  in {
-    nixosConfigurations = {
-      # hostname is nixos
-      nixos = lib.nixosSystem {
+
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs-unstable {
         inherit system;
+        config.allowUnfree = true;
+      };
+      lib = nixpkgs-unstable.lib;
+      hm-lib = home-manager-unstable.lib;
+
+    in
+    {
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
+      nixosConfigurations = {
+        # hostname is nixos
+        nixos = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system/configuration.nix
+          ];
+        };
+      };
+      homeConfigurations.hill = hm-lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [
-          ./system/configuration.nix    
+          ./home/hill.nix
         ];
       };
     };
-    homeConfigurations.hill = hm-lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        ./home/hill.nix
-      ];
-    };
-  };
 }

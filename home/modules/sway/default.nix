@@ -5,12 +5,12 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    systemdIntegration = true; 
+    systemdIntegration = true;
     config = rec {
       modifier = "Mod4";
       terminal = "kitty";
       menu = "wofi --show run";
-      bars = [];
+      bars = [ ];
       gaps = {
         inner = 8;
         outer = 1;
@@ -19,7 +19,7 @@
       };
       startup = [
         { command = "waybar"; }
-        { command = "sworkstyle";}
+        { command = "sworkstyle"; }
       ];
       # assigns = {
       #   "2" = [{ app_id = "firefox"; }];
@@ -40,7 +40,7 @@
           "bg" = "/home/hill/.background-image fill";
         };
       };
-      keybindings = lib.mkOptionDefault{
+      keybindings = lib.mkOptionDefault {
         "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
         "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
         "XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
