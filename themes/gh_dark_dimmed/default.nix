@@ -113,103 +113,42 @@ let
       c9 = "#5D1008";
     };
   };
-  components = with palette; {
-    accent = {
-      emphasis = blue.c5;
-      fg = blue.c3;
-      muted = blue.c4;
-      subtle = blue.c4;
-    };
-    attention = {
-      emphasis = yellow.c5;
-      fg = yellow.c3;
-      muted = yellow.c4;
-      subtle = yellow.c4;
-    };
-    border = {
-      default = gray.c6;
-      muted = gray.c7;
-      subtle = gray.c0;
-    };
-    canvas = {
-      default = gray.c9;
-      inset = black;
-      overlay = gray.c8;
-      subtle = gray.c8;
-    };
-    closed = {
-      emphasis = red.c5;
-      fg = red.c4;
-      muted = red.c4;
-      subtle = red.c4;
-    };
-    danger = {
-      emphasis = red.c5;
-      fg = red.c4;
-      muted = red.c4;
-      subtle = red.c4;
-    };
-    done = {
-      emphasis = purple.c5;
-      fg = purple.c4;
-      muted = purple.c4;
-      subtle = purple.c4;
-    };
-    fg = {
-      default = gray.c1;
-      muted = gray.c3;
-      onEmphasis = gray.c0;
-      subtle = gray.c4;
-    };
-    neutral = {
-      emphasis = gray.c4;
-      emphasisPlus = gray.c4;
-      muted = gray.c4;
-      subtle = gray.c4;
-    };
-    open = {
-      emphasis = green.c5;
-      fg = green.c3;
-      muted = green.c4;
-      subtle = green.c4;
-    };
-    severe = {
-      emphasis = orange.c5;
-      fg = orange.c4;
-      muted = orange.c4;
-      subtle = orange.c4;
-    };
-    sponsors = {
-      emphasis = pink.c5;
-      fg = pink.c4;
-      muted = pink.c4;
-      subtle = pink.c4;
-    };
-    success = {
-      emphasis = green.c5;
-      fg = green.c3;
-      muted = green.c4;
-      subtle = green.c4;
-    };
-  };
+
 
 in
 {
-  # Ported from OhMyREPL config:
-  # julia = with palette; {
-  #   symbol = blue.c2;
-  # 	comment = gray.c3;
-  # 	string = blue.c1;
-  # 	call = blue.c2;
-  # 	operation = red.c3;
-  # 	keyword = red.c3;
-  # 	text = gray.c1;
-  # 	macro = blue.c2;
-  # 	function_def = purple.c3;
-  # 	error = red.c3; # TODO: custom color?
-  # 	argdef = blue.c2;
-  # 	number = blue.c2;
-  # };
+  # System-wide colors, used in sway and alacritty.
+  # Superset of the usual 16 ANSI colors.
+  systemColors = with palette; {
+    # ANSI
+    black = black;
+    red = red.c5;
+    green = green.c5;
+    yellow = yellow.c5;
+    blue = blue.c7;
+    magenta = purple.c5;
+    cyan = blue.c2;
+    white = gray.c1;
+    # Non-ANSI
+    orange = orange.c5;
+    pink = pink.c4;
+    coral = coral.c4;
+    bright = {
+      # ANSI
+      black = gray.c8;
+      red = red.c3;
+      green = green.c4;
+      yellow = yellow.c3;
+      blue = blue.c4;
+      magenta = purple.c2;
+      cyan = blue.c1;
+      white = white;
+      # Non-ANSI
+      orange = orange.c2;
+      pink = pink.c1;
+      coral = coral.c2;
+    };
+  };
 
   programs.helix.themes.nixTheme = with palette; {
     "attribute" = gray.c1;
