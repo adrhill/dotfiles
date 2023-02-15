@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
+  inherit (config.colorscheme) colors;
+
   waybar-style = {
     margin = {
       left = "8px";
@@ -14,17 +16,23 @@ let
     };
     border-radius = "10px";
     transition = "none";
-    color = "#ffffff";
-    background = "#383c4a";
+    colorscheme = {
+      # https://github.com/tinted-theming/home/blob/main/styling.md
+      background = "#${colors.base00}"; # default background
+      foreground = "#${colors.base05}"; # default foreground
+      red = "#${colors.base08}"; # usually red
+      green = "#${colors.base0B}"; # usually green
+    };
   };
+
   waybar-module-default = with waybar-style; ''
     margin-right: ${margin.right};
     padding-left: ${padding.left};
     padding-right: ${padding.right};
     border-radius: ${border-radius};
     transition: ${transition};
-    color: ${color};
-    background: ${background};
+    color: ${colorscheme.foreground};
+    background: ${colorscheme.background};
   '';
 
 in
@@ -124,7 +132,7 @@ in
           border: none;
           border-radius: 0;
           font-family: Julia Mono;
-          min-height: 20px;
+          min-height: 18px;
       }
 
       window#waybar {
@@ -140,7 +148,7 @@ in
           margin-right: ${waybar-style.margin.right};
           border-radius: ${waybar-style.border-radius};
           transition: ${waybar-style.transition};
-          background: ${waybar-style.background};
+          background: ${waybar-style.colorscheme.background};
       }
 
       #workspaces button {
@@ -180,20 +188,20 @@ in
       #bluetooth {${waybar-module-default}}
       #temperature {${waybar-module-default}}
       #temperature.critical {
-          background-color: #eb4d4b;
+          background-color: ${waybar-style.colorscheme.red};
       }
       #backlight {${waybar-module-default}}
       #battery {${waybar-module-default}}
       #battery.charging {
           color: #ffffff;
-          background-color: #26A65B;
+          background-color: ${waybar-style.colorscheme.green};
       }
       #battery.warning:not(.charging) {
           background-color: #ffbe61;
           color: black;
       }
       #battery.critical:not(.charging) {
-          background-color: #f53c3c;
+          background-color: ${waybar-style.colorscheme.red};
           color: #ffffff;
       }
       #tray {${waybar-module-default}}
