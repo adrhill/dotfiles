@@ -31,9 +31,15 @@ in
       #   "3" = [{ app_id = "telegram-desktop"; }];
       # };
       input = {
+        # Options applied to built in ThinkPad keyboard:
         "type:keyboard" = {
-          xkb_options = "caps:escape,ctrl:swap_lalt_lctl";
+          xkb_options = "caps:escape,compose:rwin,ctrl:swap_lalt_lctl";
         };
+        # Options applied to Apple Magic Keyboard
+        "76:615:Adrian_Hill___s_Keyboard" = {
+          xkb_options = "caps:escape,compose:rwin,altwin:swap_lalt_lwin";
+        };
+        # Options applied to all touchpads
         "type:touchpad" = {
           tap = "enabled";
           natural_scroll = "enabled";
