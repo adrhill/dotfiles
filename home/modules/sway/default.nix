@@ -1,5 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
+let
+  inherit (config) colorscheme wallpaper;
+
+in
 {
   imports = [ ./waybar.nix ];
 
@@ -20,6 +24,7 @@
       startup = [
         { command = "waybar"; }
         { command = "sworkstyle"; }
+        { command = "swaybg -i ${wallpaper} --mode fill"; }
       ];
       # assigns = {
       #   "2" = [{ app_id = "firefox"; }];
@@ -35,11 +40,11 @@
           scroll_factor = "0.5";
         };
       };
-      output = {
-        "*" = {
-          "bg" = "/home/hill/.background-image fill";
-        };
-      };
+      # output = {
+      #   "*" = {
+      #     "bg" = "/home/hill/.background-image fill";
+      #   };
+      # };
       keybindings = lib.mkOptionDefault {
         "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
         "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
