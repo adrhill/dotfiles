@@ -13,13 +13,13 @@
   home.username = "hill";
   home.homeDirectory = "/home/hill";
 
+  colorscheme = nix-colors.colorSchemes.oceanicnext;
   # wallpaper = nix-colors-lib-contrib.nixWallpaperFromScheme {
   #   scheme = config.colorScheme;
   #   width = 3840;
   #   height = 2160;
   #   logoScale = 5.0;
   # };
-  colorscheme = nix-colors.colorSchemes.oceanicnext;
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -40,6 +40,7 @@
     # Take screenshots
     grim
     #===== CLI utils =====#
+    # Several CLI modules are defined in ./modules/cli 
     # Terminal multiplexer
     tmux
     # File manager
@@ -52,7 +53,7 @@
     fzf
     ripgrep
     # Process viewer
-    htop
+    bottom
     # PCI utilities, e.g. lspci
     pciutils
     # Print system information

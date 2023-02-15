@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./sway ./kitty ./zsh ./helix ./git ./vscode ];
+  imports = [ ./sway ./kitty ./zsh ./helix ./cli ./vscode ];
 }
