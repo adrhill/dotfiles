@@ -19,7 +19,7 @@ let
     colorscheme = {
       # https://github.com/tinted-theming/home/blob/main/styling.md
       background = "#${colors.base00}"; # default background
-      foreground = "#${colors.base05}"; # default foreground
+      foreground = "#${colors.base06}"; # default foreground
       red = "#${colors.base08}"; # usually red
       green = "#${colors.base0B}"; # usually green
     };
