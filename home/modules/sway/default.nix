@@ -12,14 +12,38 @@ in
     systemdIntegration = true;
     config = rec {
       modifier = "Mod4";
+      workspaceAutoBackAndForth = true;
       terminal = "kitty";
       menu = "wofi --show run";
       bars = [ ];
       gaps = {
         inner = 8;
-        outer = 1;
+        outer = -3; # inner is added to this
         smartBorders = "on";
         smartGaps = true;
+      };
+      window.border = 2;
+      colors = {
+        background = "#${colorscheme.colors.base00}";
+        focused = {
+          background = "#${colorscheme.colors.base0A}"; # yellow
+          border = "#${colorscheme.colors.base0A}";
+          childBorder = "#${colorscheme.colors.base0A}";
+          indicator = "#${colorscheme.colors.base0C}";
+          text = "#${colorscheme.colors.base00}";
+        };
+        unfocused = {
+          background = "#${colorscheme.colors.base00}";
+          border = "#${colorscheme.colors.base00}";
+          childBorder = "#${colorscheme.colors.base00}";
+          indicator = "#${colorscheme.colors.base00}";
+          text = "#${colorscheme.colors.base00}";
+        };
+      };
+      fonts = {
+        names = [ "Julia Mono" ];
+        style = "Medium";
+        size = 11.0;
       };
       startup = [
         { command = "waybar"; }
@@ -46,11 +70,11 @@ in
           scroll_factor = "0.5";
         };
       };
-      # output = {
-      #   "*" = {
-      #     "bg" = "/home/hill/.background-image fill";
-      #   };
-      # };
+      output = {
+        # DPI settings for each output device:
+        eDP-1.scale = "1.2";
+        HDMI-A-1.scale = "1.2";
+      };
       keybindings = lib.mkOptionDefault {
         "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
         "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
@@ -58,9 +82,6 @@ in
         "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
         "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
       };
-      # DPI settings four each output device:
-      output.eDP-1.scale = "1.2";
-      output.HDMI-A-1.scale = "1.1";
     };
     extraOptions = [
       "--unsupported-gpu" # NVIDIA drivers

@@ -33,14 +33,14 @@ in
       base06 = "#ADBAC7"; # Light Foreground (Not often used)
       base07 = "#CDD9E5"; # Light Background (Not often used)
       # Colors
-      base08 = "#F47067"; #       RED - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-      base09 = "#E0823D"; #    ORANGE - Integers, Boolean, Constants, XML Attributes, Markup Link Url
-      base0A = "#DAAA3F"; #    YELLOW - Classes, Markup Bold, Search Text Background
-      base0B = "#6BC46D"; #     GREEN - Strings, Inherited Class, Markup Code, Diff Inserted
+      base08 = "#F47067"; # RED       - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+      base09 = "#E0823D"; # ORANGE    - Integers, Boolean, Constants, XML Attributes, Markup Link Url
+      base0A = "#DAAA3F"; # YELLOW    - Classes, Markup Bold, Search Text Background
+      base0B = "#57AB5A"; # GREEN     - Strings, Inherited Class, Markup Code, Diff Inserted
       base0C = "#96D0FF"; # LIGHTBLUE - Support, Regular Expressions, Escape Characters, Markup Quotes
-      base0D = "#6CB6FF"; #      BLUE - Functions, Methods, Attribute IDs, Headings
-      base0E = "#DCBDFB"; #      PINK - Keywords, Storage, Selector, Markup Italic, Diff Changed
-      base0F = "#AE5622"; #    PURPLE - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+      base0D = "#6CB6FF"; # BLUE      - Functions, Methods, Attribute IDs, Headings
+      base0E = "#DCBDFB"; # PINK      - Keywords, Storage, Selector, Markup Italic, Diff Changed
+      base0F = "#AE5622"; # PURPLE    - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
     };
   };
 
