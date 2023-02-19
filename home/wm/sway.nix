@@ -5,8 +5,6 @@ let
 
 in
 {
-  imports = [ ./waybar.nix ];
-
   wayland.windowManager.sway = {
     enable = true;
     systemdIntegration = true;

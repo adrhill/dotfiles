@@ -10,7 +10,10 @@ in
     theme = "One Dark";
     font.size = 11;
     font.name = "Julia Mono";
-    extraConfig = "background_opacity 0.97\n enable_audio_bell no";
+    extraConfig = "
+      background_opacity 0.97
+      enable_audio_bell no
+    ";
 
     # Define colorscheme through nix-colors:
     settings = {

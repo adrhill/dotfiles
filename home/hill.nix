@@ -1,21 +1,24 @@
-{ pkgs, config, nix-colors, lib, ... }:
-
+{ inputs, lib, pkgs, config, outputs, ... }:
 let
-  nix-colors-lib-contrib = nix-colors.lib-contrib { inherit pkgs; };
+  inherit (inputs.nix-colors) colorSchemes;
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
 
 in
 {
   imports = [
-    ./modules
-    ./wallpaper.nix
-    nix-colors.homeManagerModule
-  ];
+    inputs.nix-colors.homeManagerModule
+    ./wm
+    ./term
+    ./shell
+    ./helix
+    ./cli
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = "hill";
   home.homeDirectory = "/home/hill";
 
   # Use existing colorscheme:
-  # colorscheme = nix-colors.colorSchemes.oceanicnext;
+  # colorscheme = colorSchemes.oceanicnext;
 
   # Define own colorscheme:
   colorscheme = {
@@ -44,7 +47,7 @@ in
     };
   };
 
-  wallpaper = nix-colors-lib-contrib.nixWallpaperFromScheme {
+  wallpaper = nixWallpaperFromScheme {
     scheme = config.colorScheme;
     width = 3840;
     height = 2160;

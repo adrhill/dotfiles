@@ -16,8 +16,9 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, nix-colors, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, nix-colors, ... }@inputs:
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = import nixpkgs-unstable {
         inherit system;
@@ -28,23 +29,23 @@
 
     in
     {
+      homeManagerModules = import ./modules/home-manager;
+      
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
+
       nixosConfigurations = {
         # hostname is nixos
         nixos = lib.nixosSystem {
           inherit system;
-          modules = [
-            ./system/configuration.nix
-          ];
+          modules = [ ./system/configuration.nix ];
+          specialArgs = { inherit inputs outputs; };
         };
       };
       homeConfigurations = {
         hill = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [
-            ./home/hill.nix
-          ];
-          extraSpecialArgs = { inherit nix-colors; };
+          modules = [ ./home/hill.nix ];
+          extraSpecialArgs = { inherit inputs outputs; };
         };
       };
     };
