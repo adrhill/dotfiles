@@ -106,6 +106,8 @@
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
+  # Start ssh-agent
+  programs.ssh.startAgent = true;
 
   environment.systemPackages = with pkgs; [
     vim

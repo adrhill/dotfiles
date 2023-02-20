@@ -11,6 +11,7 @@ in
     ./term
     ./shell
     ./helix
+    ./vscode
     ./cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -71,7 +72,7 @@ in
     # Take screenshots
     grim
 
-    #===== CLI utils =====#
+    #===== TUI & CLI utils =====#
     # Several CLI modules are defined in ./modules/cli 
     # Terminal multiplexer
     tmux
@@ -95,6 +96,8 @@ in
     weechat
     # CLI helper
     tldr
+    # Habit tracker
+    dijo
 
     #===== GUI =====#
     firefox
@@ -115,10 +118,15 @@ in
     # Julia
     julia-bin
     # Python
-    python310
     poetry
+    python310
+    python310Packages.ipython
+    python310Packages.jupyter
+    python310Packages.jupyterlab
     # Nix LSP
     rnix-lsp
+    # Markdown LSP
+    marksman
 
     #===== Other =====#
     # Make GNOME icon themes available
