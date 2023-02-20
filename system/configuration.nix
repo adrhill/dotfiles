@@ -125,8 +125,8 @@
     material-icons
   ];
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = [ pkgs.zsh ];
+  users.defaultUserShell = pkgs.nushell;
+  environment.shells = [ pkgs.nushell ];
 
   environment.variables = {
     EDITOR = "hx"; # Helix

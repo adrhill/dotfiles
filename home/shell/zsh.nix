@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -21,14 +19,9 @@
         "copyfile"
         "copypath"
         "sudo"
-        "autojump"
         "web-search"
         "poetry"
       ];
     };
-  };
-  programs.autojump = {
-    enable = true;
-    enableZshIntegration = true;
   };
 }
