@@ -104,6 +104,7 @@ in
       let-env config = {
         edit_mode: vi
         show_banner: false  
+        shell_integration: true
         color_config: $base16_theme
         history: {
           max_size: 100000 # Session has to be reloaded for this to take effect

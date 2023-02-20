@@ -60,8 +60,6 @@ in
     # swaylock # TODO: configure before using
     # Launcher
     wofi
-    # Use window icons as workspace names
-    swayest-workstyle # TODO: fix icons
     # Notifications
     mako
     # Idle management
