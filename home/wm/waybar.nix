@@ -50,7 +50,7 @@ in
           "HDMI-A-1"
         ];
         modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "sway/window" ];
+        modules-center = [ ];
         modules-right = [
           "cpu"
           "memory"
