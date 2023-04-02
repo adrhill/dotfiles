@@ -102,6 +102,9 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true; # GUI
 
+  # Shell
+  programs.fish.enable = true;
+
   # Add keychain
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
@@ -127,8 +130,8 @@
     material-icons
   ];
 
-  users.defaultUserShell = pkgs.nushell;
-  environment.shells = [ pkgs.nushell ];
+  users.defaultUserShell = pkgs.fish;
+  environment.shells = [ pkgs.fish ];
 
   environment.variables = {
     EDITOR = "hx"; # Helix

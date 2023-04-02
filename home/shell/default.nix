@@ -1,7 +1,8 @@
 {
   imports = [
     # ./zsh.nix
-    ./nushell.nix
+    # ./nushell.nix
+    ./fish.nix
   ];
 
   programs.zoxide = { enable = true; };
