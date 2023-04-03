@@ -74,6 +74,8 @@ in
 
     #===== TUI & CLI utils =====#
     # Several CLI modules are defined in ./modules/cli 
+    # Replacement for ls and tree
+    exa
     # Terminal multiplexer
     tmux
     # File manager
@@ -90,12 +92,14 @@ in
     pciutils
     # Print system information
     neofetch
+    # du alternative
+    du-dust
     # Git Terminal UI
     gitui
     # Messaging clients
     weechat
     # CLI helper
-    tldr
+    tealdeer
     # Habit tracker
     dijo
 
