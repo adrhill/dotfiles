@@ -46,6 +46,7 @@
     "ui.selection" = { bg = "base02"; };
     "ui.statusline" = { fg = "base04"; bg = "base01"; };
     "ui.text" = "base05";
+    "ui.virtual.inlay-hint" = { fg = "base03"; modifiers = [ "italic" ]; };
     "ui.text.focus" = "base05";
     "ui.virtual.ruler" = { bg = "base01"; };
     "ui.virtual.whitespace" = { fg = "base03"; };

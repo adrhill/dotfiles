@@ -127,6 +127,9 @@ in
     python310Packages.ipython
     python310Packages.jupyter
     python310Packages.jupyterlab
+    # Rust
+    rustup
+    rust-analyzer
     # Nix LSP
     rnix-lsp
     # Markdown LSP
