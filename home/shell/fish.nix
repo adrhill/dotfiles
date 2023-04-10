@@ -16,6 +16,10 @@
       code = "codium";
       amend = "git commit --amend --no-edit";
       gitgraph = "git log --oneline --decorate --graph";
+      juliap = "julia --banner=no --project='.'";
+      juliaf = "julia --startup-file=no --quiet";
+      pluto = "julia --banner=no -e 'using Pluto; Pluto.run()'";
+
     };
     shellAliases = { };
     functions = {
