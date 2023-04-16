@@ -12,8 +12,13 @@ in
     settings = {
       theme = "${colorscheme.slug}";
       editor = {
-        soft-wrap.enable = true;
+        line-number = "relative";
+        text-width = 88;
         rulers = [ 88 120 ];
+        soft-wrap = {
+          enable = true;
+          wrap-at-text-width = true;
+        };
         lsp = {
           display-inlay-hints = true;
           display-messages = true;
