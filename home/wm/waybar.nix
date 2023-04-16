@@ -5,10 +5,8 @@ let
 
   waybar-style = {
     margin = {
-      left = "8px";
-      right = "8px";
-      top = "4px";
-      bottom = "4px";
+      left = "4px";
+      right = "4px";
     };
     padding = {
       left = "16px";
@@ -26,6 +24,7 @@ let
   };
 
   waybar-module-default = with waybar-style; ''
+    margin-left: ${margin.left};
     margin-right: ${margin.right};
     padding-left: ${padding.left};
     padding-right: ${padding.right};
@@ -44,7 +43,6 @@ in
       {
         layer = "top";
         position = "top";
-        height = 30;
         output = [
           "eDP-1"
           "HDMI-A-1"
@@ -81,7 +79,7 @@ in
           format-icons = [ " " "" "" ];
         };
         "network" = {
-          format-wifi = " {essid} ({signalStrength}%)";
+          format-wifi = "  {signalStrength}%";
           format-ethernet = " {ifname}: {ipaddr}/{cidr}";
           format-disconnected = "Disconnected ⚠";
         };
@@ -155,7 +153,7 @@ in
           transition: none;
           color: #7c818c;
           background: transparent;
-          padding: 5px;
+          padding: 3px;
           font-size: 18px;
       }
 
