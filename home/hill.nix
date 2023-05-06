@@ -18,35 +18,7 @@ in
   home.username = "hill";
   home.homeDirectory = "/home/hill";
 
-  # Use existing colorscheme:
-  # colorscheme = colorSchemes.oceanicnext;
-
-  # Define own colorscheme:
-  colorscheme = {
-    slug = "ghdd"; # modification of GitHub's Dark-dimmed
-    name = "GitHub Dark-dimmed";
-    author = "Adrian Hill";
-    colors = {
-      # Grays
-      base00 = "#22272E"; # Default Background
-      base01 = "#373E47"; # Lighter Background (Used for status bars, line number and folding marks)
-      base02 = "#444C56"; # Selection Background
-      base03 = "#545D68"; # Comments, Invisibles, Line Highlighting
-      base04 = "#768390"; # Dark Foreground (Used for status bars)
-      base05 = "#909DAB"; # Default Foreground, Caret, Delimiters, Operators
-      base06 = "#ADBAC7"; # Light Foreground (Not often used)
-      base07 = "#CDD9E5"; # Light Background (Not often used)
-      # Colors
-      base08 = "#F47067"; # RED       - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-      base09 = "#E0823D"; # ORANGE    - Integers, Boolean, Constants, XML Attributes, Markup Link Url
-      base0A = "#DAAA3F"; # YELLOW    - Classes, Markup Bold, Search Text Background
-      base0B = "#57AB5A"; # GREEN     - Strings, Inherited Class, Markup Code, Diff Inserted
-      base0C = "#96D0FF"; # LIGHTBLUE - Support, Regular Expressions, Escape Characters, Markup Quotes
-      base0D = "#6CB6FF"; # BLUE      - Functions, Methods, Attribute IDs, Headings
-      base0E = "#DCBDFB"; # PINK      - Keywords, Storage, Selector, Markup Italic, Diff Changed
-      base0F = "#AE5622"; # PURPLE    - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
-    };
-  };
+  colorscheme = colorSchemes.decaf;
 
   wallpaper = nixWallpaperFromScheme {
     scheme = config.colorScheme;
