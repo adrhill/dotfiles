@@ -79,7 +79,7 @@ in
     # Terminal multiplexer
     tmux
     # File manager
-    nnn
+    ranger
     # Fast find alternative
     fd
     # Fuzzy finder
@@ -127,6 +127,8 @@ in
     python310Packages.ipython
     python310Packages.jupyter
     python310Packages.jupyterlab
+    # GCC
+    gcc
     # Rust
     rustup
     rust-analyzer
