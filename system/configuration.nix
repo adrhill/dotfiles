@@ -56,6 +56,9 @@
     [[ "$(tty)" == /dev/tty1 ]] && sway
   '';
 
+  # Use Ozone, e.g. for VSCode
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Enable networking
   networking.hostName = "nixos"; # hostname.
   networking.networkmanager.enable = true;
