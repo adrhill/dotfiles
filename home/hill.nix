@@ -60,6 +60,7 @@ in
     ripgrep
     # Process viewer, replaces htop
     bottom
+    nvtop # GPU monitoring
     # PCI utilities, e.g. lspci
     pciutils
     # Print system information
@@ -90,7 +91,9 @@ in
 
     #===== Programming =====#
     # GPU support
-    cudatoolkit
+    cudaPackages.cudatoolkit
+    cudaPackages.cudnn
+    linuxPackages.nvidia_x11
     # Julia
     julia-bin
     # Python
@@ -113,6 +116,14 @@ in
     # Make GNOME icon themes available
     gnome.adwaita-icon-theme
   ];
+
+  home.sessionVariables = {
+    CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
+    CUDNN_PATH = "${pkgs.cudaPackages.cudnn}";
+    LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.cudaPackages.cudatoolkit}/lib:${pkgs.cudaPackages.cudnn}/lib";
+    EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
+    EXTRA_CCFLAGS = "-I/usr/include";
+  };
 
   gtk.iconTheme = {
     package = pkgs.gnome.adwaita-icon-theme;
