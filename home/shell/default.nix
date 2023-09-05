@@ -15,7 +15,12 @@ in
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
+      directory = {
+        truncation_length = 5;
+        fish_style_pwd_dir_length = 20;
+
+      };
     };
   };
   programs.zellij = {

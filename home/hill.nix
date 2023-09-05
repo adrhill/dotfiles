@@ -73,8 +73,6 @@ in
     weechat
     # CLI helper
     tealdeer
-    # Habit tracker
-    dijo
 
     #===== GUI =====#
     firefox
@@ -96,6 +94,7 @@ in
     linuxPackages.nvidia_x11
     # Julia
     julia-bin
+    gdk-pixbuf
     # Python
     poetry
     python310
@@ -106,7 +105,6 @@ in
     gcc
     # Rust
     rustup
-    rust-analyzer
     # Nix LSP
     rnix-lsp
     # Markdown LSP
