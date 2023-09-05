@@ -81,7 +81,10 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    cudaSupport = true;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -122,7 +125,7 @@
     firefox
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     julia-mono
     source-code-pro
     noto-fonts
